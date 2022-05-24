@@ -23,7 +23,7 @@ class Publisher:
         return 
 
 
-    async def get_message(self, id : str):
+    async def get_message(self, id : str) -> AgentTask:
         for agent in self.__agents:
             if agent.id == id:
                 return await agent.get_task()

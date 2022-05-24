@@ -46,7 +46,8 @@ async def get_message():
     data = await request.json
     id = data.get('agent_id')
     if id:
-        return await Publisher().get_message(id)
+        msg = await Publisher().get_message(id)
+        return msg.task_info()
 
 
 @api_bp.get('/register_agent')
