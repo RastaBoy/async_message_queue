@@ -15,8 +15,5 @@ class AgentTask(Serializable):
     def __dict__(self):
         return {
             'id' : self.id,
-            'msg' : {
-                'title' : self.msg.title,
-                'text' : self.msg.text,
-            }
+            'msg' : self.msg.serialize()
         }

@@ -1,8 +1,14 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
+
+@dataclass
+class SerializableDTO:
+
+    def serialize(self):
+        return asdict(self)
 
 
 @dataclass
-class Message():
+class Message(SerializableDTO):
     title : str
     text : str
 
