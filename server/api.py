@@ -10,6 +10,7 @@ api_bp = Blueprint('api_bp', __name__)
 def api_result(func):
     @wraps(func)
     async def wrapper(*args, **kwargs):
+
         return {
             'result': True,
             'data': await func(*args, **kwargs)
@@ -47,7 +48,7 @@ async def get_message():
     id = data.get('agent_id')
     if id:
         msg = await Publisher().get_message(id)
-        return msg.task_info()
+        return msg.to_json()
 
 
 @api_bp.get('/register_agent')
